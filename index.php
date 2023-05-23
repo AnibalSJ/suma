@@ -9,52 +9,25 @@
     <!-- Main css -->
     <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/login.css">
     <!-- Main css -->
 </head>
 <body>
-        <!-- !! Tablas -->
-        <div class="con-table">
-            <table class="table-general table-sopor">
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td class="dell-sem"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td class="dell-sem"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    
-        <!-- !! Items soporte -->
-        <div class="items-info items-sopor">
-            <div class="cabecera">
-                <h5> <!--Para cerrarlo con funcion de js-->
-                    <img src="./assets/img/rule.svg" alt="" class="menus-cabecera">
-                    LINEA TELEFONICA</h5>
-                <img src="./assets/img/Group 10.svg" alt="parlante-audio-etb" class="img-audio" id="img-info-dia" onclick="alertAudio('au-info-dia', 'img-info-dia')">
-            </div>
-            <div class="body-items-inf">
-                <div class="contet" id="con-sopo-inter"> <!--Para minimuzarlo poner clase hidebody-->
-                    
-                </div>
-            </div>
-        </div>
-    
+    <span class="suma"><img src="./assets/img/suma.png" alt="" srcset=""></span>
+    <div class="container">
+        <form method="post" action="login.php">
+            <label for="" class="credenciales">Ingrese Credenciales</label>
+            <div class="linea-title linea"></div>
+            <input type="text" name="usuario" id="" placeholder="Usuario">
+            <input type="password" name="password" id="" placeholder="Password">
+            <input type="submit" value="Ingreso" name="btn-login">
+            <div class="linea"></div>
+        </form>
+    </div>
 
-    <!-- main js -->
-    <script src="./bootstrap/jquery.js"></script>
-    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="./js/main.js"></script>
-    <!-- main js -->
+    <footer>
+        <span class="etb"><img src="./assets/img/ETB.svg" alt="" srcset=""></span>
+        <p>&copy; 2023 - ETB(Empresa de Telecomunicaciones de Bogotá)</p>
+    </footer>
 </body>
 </html>

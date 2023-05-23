@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #20A4CB;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+  
+form {
+    width: 400px;
+    text-align: center;
+}
+input{
+    display: block;
+    width: 100%;
+    margin: 15px 0;
+    border-radius: 5px;
+    border: none;
+    padding: 6px;
+}
+input[type="submit"]{
+    width: 100px;
+    margin: 0 auto;
+    background: #f26821;
+    border: 1px solid #fff;
+    color: #fff;
+}
+.credenciales{
+    position: absolute;
+    top: 185px;
+    right: 530px;
+    padding: 1px 8px;
+    z-index: 2;
+    color: #fff;
+    font-weight: bold;
+    font-size: 25px;
+    background: #20A4CB;
+}
+.linea{
+    padding: 1px 30px;
+    background-color: #fff;
+    margin: 20px 0;
+}
+.linea-title{
+    position: relative;
+    top: -15px;
+    z-index: 1;
+}
+.suma{
+    position: absolute;
+    top: 55px;
+    right: 530px;
+}
+.etb{
+    position: absolute;
+    top: 450px;
+    right: 600px;
+}
+footer p{
+    position: absolute;
+    top: 530px;
+    right: 460px;
+    color: #fff;
+}
