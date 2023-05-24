@@ -45,7 +45,7 @@
                             <input type="text" name="" id="" placeholder="Número de Orden">
                         </div>
                         <div class="con-funtion-fil">
-                            <button type="submit" class="btn-clasic"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>  BUSCAR</button>
+                            <button type="submit" class="btn-clasic" style="background: var(--blue-os-etb);"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>  BUSCAR</button>
                             <button class="btn-clasic"><i class="fa-solid fa-broom" style="color: #ffffff;"></i>LIMPIAR</button>
                         </div>
                     </div>
