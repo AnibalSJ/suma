@@ -3,11 +3,16 @@
 .container-genre{
     display: grid;
     justify-items: center;
+    grid-template-columns: 245px calc(100% - 245px);
 }
 :root{
     --orange-etb: #F36F31;
     --blue-os-etb: #008AA6;
     --gray-etb: #5e6f7e;
+}
+body{
+  margin: 0px;
+  padding: 0px;
 }
 
 .img-audio{
@@ -53,6 +58,7 @@
 .container-genre{
     /* width: 100vw; */
     min-width: 314px;
+    grid-template-rows: 60px 55px 1fr;
 }
 .con-info-audios{
     background: var(--orange-etb);
@@ -62,13 +68,15 @@
     height: 60px;
     align-items: center;
     column-gap: 10px;
+    grid-column: 1/3;
+    font-family: 'Poppins';
 }
 .con-info-audios p{
     width: 100%;
     padding: 0px;
     margin: 0px;
     color: white;
-    font-weight: 600;
+    font-weight: 650;
 }
 .con-info-audios .con-img-au{
     display: grid;
@@ -80,66 +88,75 @@
     width: 100%;
     height: 55px;
     display: grid;
-    grid-template-columns: 1fr 40px 40px;
-    justify-content: center;
+    grid-template-columns: 40px 250px;
+    justify-content: space-between;
     align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
-.header .volver-header, .header .text-header-ac{
-    display: none;
+.header .menu-ham{
+  margin-left: 20px;
+  cursor: pointer;
 }
-.header-act {
-    grid-template-columns: 40px 1fr 40px 40px;
+.header .user{
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  color: white;
 }
-.header-act .volver-header, .header-act .text-header-ac{
-    display: block;
-}
-.header-act .text-header{
-    display: none;
+.header .user img{
+  border-radius: 100%;
 }
 
-.text-header, .text-header-ac{
-    color: white;
-    font-size: 17px;
-    display: grid;
-    justify-content: center;
-    text-align: center;
-}
-.text-header span{
-    font-size: 15px;
-}
 .header img{
     height: 30px;
 }
-.actions-h{
-    width: 100%;
-    background: #F5F5F5;
-    height: 45px;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    grid-template-columns: 150px 80px 90px;
-    padding-left: 20px;
-    column-gap: 20px;
-    
+.sidebar-m{
+  background: #0077C6;
+  width: 100%;
+  height: calc(100vh - 60px);
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  grid-row: 2/4;
 }
-.actions-h a{
-    color: #3890C3;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: 700;
-    text-align: center;
+.head-side{
+  display: grid;
+  width: 100%;
 }
-.actions-h img{
-    width: 35px;
+.head-head-side{
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-#select-header{
-    border: none;
-    color: #3890C3;
-    font-weight: 550;
-    background: none;
+.head-head-side img{
+  width: 80px;
 }
-#btn-actividad-h{
-    display: none;
+.head-info-user{
+  display: grid;
+  grid-template-columns: 70px 125px;
+  column-gap: 40px;
+  grid-template-rows: 35px 35px;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0px;
+}
+.head-info-user p{
+  margin: 0px;
+  color: #89a0b8;
+  font-size: 15px;
+}
+.name-user-side{
+  grid-column: 2/3;
+  grid-row: 2/3;
+  color: white !important;
+  font-size: 18px !important;
+  height: 100%;
+}
+.head-info-user img{
+  width: 100%;
+  grid-row: 1/3;
+  border-radius: 100%;
+  border: 5px solid white;
 }
 .modal .modal-title{
     width: 100%;
@@ -149,11 +166,41 @@
     column-gap: 10px;
     justify-content: center;
 }
+.body-side{
+  width: 100%;
+  overflow-y: scroll;
+  height: calc(100% - 240px);
+  padding-top: 20px;
+  display: grid;
+  grid-auto-rows: 50px;
+  row-gap: 20px;
+}
+.body-side .item-side{
+  display: grid;
+  grid-template-columns: 30px 110px 30px;
+  align-items: center;
+  column-gap: 20px;
+}
+.body-side .item-side img{
+  width: 20px;
+  margin-left: 10px;
+}
+.body-side .item-side p{
+  margin: 0px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+.foo-side{
+  width: 100%;
+  height: 35px;
+  background:var(--orange-etb);
+}
 /* Modal succes */
 .modal-loading{
     z-index: 893748;
 }
-.modal-susc .modal-dialog, .modal-loading .modal-dialog{
+.modal-susc .modal-dialog, .modal-loading .modal-dialog{  
     display: flex;
     justify-content: center;
 }
@@ -680,8 +727,7 @@ a{
 }
 .disabled{
   display: none;
-}
-.btn-add-e{
+}.btn-add-e{
   width: 30px;
   height: 28px;
   background: var(--blue-os-etb);
@@ -711,4 +757,31 @@ a{
   height: 25px;
   margin-top: 30px;
   cursor: pointer;
+}
+.main-principal-portal{
+  width: 100%;
+  height: 100%;
+  grid-column: 2/3;
+  grid-row: 3/4;
+  display: grid;
+}
+.contedor-portal{
+  padding: 10px 20px;
+}
+.btn-clasic{
+  background: var(--orange-etb);
+  width: 110px;
+  height: 30px;
+  border-radius: 50px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  column-gap: 10px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.7);
+}
+.breadcump{
+  margin-bottom: 30px;
 }
