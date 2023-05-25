@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/portal.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
     <link href="./assets/fontawesome-free-6.4.0-web/css/fontawesome.css" rel="stylesheet">
     <link href="./assets/fontawesome-free-6.4.0-web/css/brands.css" rel="stylesheet">
     <link href="./assets/fontawesome-free-6.4.0-web/css/solid.css" rel="stylesheet">
@@ -52,5 +53,8 @@
                 </form>
         </div>
     </div>
+    <script src="./bootstrap/jquery.js"></script>
+    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

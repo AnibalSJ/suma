@@ -14,7 +14,11 @@ if(mysqli_affected_rows($db) > 0){
             $_SESSION['nombre'] = $row['nombre'];
             echo "<script>alert('Usuario correcta');window.location='portal.php'</script>";
         }else{
-            echo "<script>alert('Usuario o contraseña incorrecta');window.location='index.php'</script>";
+            $_SESSION['errorLogin'] = true;
+            header('Location: ./index.php');
         }
     }
+}else{
+    $_SESSION['errorLogin'] = true;
+    header('Location: ./index.php');
 }
