@@ -791,3 +791,20 @@ a{
   background: #0091BD  !important;
   border: 1px solid white;
 }
+.semaforo{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  filter: brightness(1.75);
+} 
+.semaforo-error{
+  background: #FF0000;
+  
+}
+.semaforo-co{
+  background: #00BB28;
+}
+.semaforo-temp{
+  background: #fbff00;
+  color: #46b8da;
+}

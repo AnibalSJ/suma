@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('./conexion.php');
+include('./DB/conexion.php');
 
 $usuario = $_POST['usuario'];
 $password = $_POST['password'];
@@ -12,7 +12,6 @@ if(mysqli_affected_rows($db) > 0){
         if($row['usuario_suma'] == $usuario && $row['pass'] == $password){
             $_SESSION['login'] = 1;
             $_SESSION['nombre'] = $row['nombre'];
-            echo "<script>alert('Usuario correcta');window.location='portal.php'</script>";
         }else{
             $_SESSION['errorLogin'] = true;
             header('Location: ./index.php');

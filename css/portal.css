@@ -14,3 +14,55 @@
     column-gap: 25px;
     row-gap: 25px;
 }
+
+.datos{
+    margin-top: 70px;
+}
+.content-item-info label{
+    color: #F36F31;
+    font-weight: bold;
+    float: right;
+    position: relative;
+    right: 380px;
+}
+.content-item-info span{
+    margin-left: 210px;
+    color: #0077C6;
+    margin-bottom: 10px;
+}
+.content-item-info button{
+    background: #11A1D8;
+    padding: 3px 5px;
+    border: 1px solid #0000004d;
+    color: #FFFFFF;
+    margin-right: 50px;
+}
+.content-item-info select{
+    display: inline-block;
+	width: 100px;
+	cursor: pointer;
+  	padding: 2px 10px;
+  	outline: 0; 
+  	border: 0;
+	border-radius: 0;
+	background: #ffffff;
+	color: #3f3f3f;
+	font-size: 1em;
+	color: #4d4d4d;
+	border:1px solid #00000049;
+    border-radius: 3px;
+    position: relative;
+    left: 210px;
+    transition: all 0.25s ease
+}
+.content-item-info{
+    margin: 10px;
+    margin-right: 30px;
+    width: 580px;
+}
+.body-items-inf .content-info{
+    display: flex;
+}
+.oculto{
+    display: none;
+}
