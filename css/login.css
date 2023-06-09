@@ -1,0 +1,95 @@
+body{
+    background: #20A4CB;
+}
+.container-login{
+    display: grid;
+    grid-template-columns: 360px;
+    justify-content: center;
+    width: 100vw;
+    padding-top: 4%;
+}
+.header-login{
+    display: grid;
+    row-gap: 25px;
+    justify-items: center;
+    /* width: 340px; */
+}
+.tittle-login{
+    color: white;
+    font-family: 'Signika';
+    text-align: center;
+    display: flex;
+    align-items: center;
+    font-size: 18pt;
+    column-gap: 10px;
+}
+.tittle-login span{
+    width: 50px;
+    height: 1px;
+    background: white;
+    display: grid;
+}
+#btn-sub-login{
+    border: 1px solid white;
+    box-shadow: none;
+    width: 73px;
+    height: 38px;
+    border-radius: 7px;
+    font-family: 'Signika';
+}
+.body-login{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, 33px) 1px;
+    row-gap: 20px;
+}
+.body-login hr{
+    background-color: white;
+    color: white;
+    width: 337.3px;
+    height: 1px;
+    opacity: 1;
+    margin: 0px;
+    padding: 0px;
+}
+.body-login input{
+    border-radius: 10px;
+    width: 85%;
+    border: 1px solid #c8c8c8;
+    box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;
+    outline: none;
+}
+.body-login input[type=text] {
+    margin-left: 10px;
+    padding-left: 10px;
+}
+.body-login input[type=password] {
+    margin-left: 10px;
+    padding-left: 10px;
+}
+.body-login input::placeholder{
+    /* padding-left: 10px; */
+    font-family: 'Signika';
+    color: rgba(0, 0, 0, 0.41);
+}
+.footer-login{
+    padding-top: 21px;
+    margin-top: 10px;
+    display: grid;
+    justify-items: center;
+    width: 410px;
+    margin-left: -25px;
+}
+.footer-login img{
+    width: 90px;
+    height: 68.66px;
+}
+.footer-login p{
+    padding-top: 21px;
+    color: white;
+    text-align: center;
+    font-family: 'Signika';
+    font-size: 16px;
+    margin: 0px;
+}
