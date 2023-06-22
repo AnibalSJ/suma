@@ -31,7 +31,8 @@
     <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
     <link href="./assets/fontawesome-free-6.4.0-web/css/fontawesome.css" rel="stylesheet">
     <link href="./assets/fontawesome-free-6.4.0-web/css/brands.css" rel="stylesheet">
-    <link href="./asset;s/fontawesome-free-6.4.0-web/css/solid.css" rel="stylesheet">
+    <link href="./assets/fontawesome-free-6.4.0-web/css/solid.css" rel="stylesheet">
+
     <title>Document</title>
 </head>
 <body>
@@ -155,34 +156,119 @@
                                             <th>Nivel Riesgo</th>
                                         </tr>
                                         <tbody>
-                                        <?php
-                                        $sql1 = mysqli_query($db,"SELECT CONCAT(nombre, ' ', apellido), cuenta.num_facturacion, cuenta.front, cuenta.producto, cuenta.direccion, cuenta.est, cuenta.tecnologia, cuenta.estado, cuenta.central, cuenta.equipo, cuenta.molecula, cuenta.titular, cuenta.num_conexion, usuario.documento FROM usuario INNER JOIN cuenta ON usuario.id = cuenta.titular WHERE tipo_documento = '$doc_type' && documento = '$num_doc' || telefono_fijo = '$num_conex'");
-                                        if($sql1->num_rows > 0){
-                                            while($row = $sql1->fetch_assoc()){
-                                                echo "<tr>";
-                                                echo "<td>".$row['front']."</td>";
-                                                echo "<td></td>";
-                                                echo "<td>".$row['producto']."</td>";
-                                                echo "<td>".$row['producto']."</td>";
-                                                echo "<td>".$row['num_conexion']."</td>";
-                                                echo "<td>".$row['num_facturacion']."</td>";
-                                                echo "<td>".$row['direccion']."</td>";
-                                                // echo "<td>".$row['est']."</td>";
-                                                echo "<td>".$row['tecnologia']."</td>";
-                                                echo "<td></td>";
-                                                echo "<td>".$row['estado']."</td>";
-                                                echo "<td></td>";
-                                                echo "<td></td>";
-                                                echo "<td></td>";
-                                                echo "<td></td>";
-                                                echo "<td class='semaforo semaforo-co'></td>";
-                                                echo "</tr>";
+                                            <?php
+                                            $sql1 = mysqli_query($db,"SELECT CONCAT(nombre, ' ', apellido), cuenta.num_facturacion, cuenta.front, cuenta.producto, cuenta.direccion, cuenta.est, cuenta.tecnologia, cuenta.estado, cuenta.central, cuenta.equipo, cuenta.molecula, cuenta.titular, cuenta.num_conexion, usuario.documento FROM usuario INNER JOIN cuenta ON usuario.id = cuenta.titular");
+                                            if($sql1->num_rows > 0){
+                                                while($row = $sql1->fetch_assoc()){
+                                                    echo "<tr>";
+                                                    echo "<td>".$row['front']."</td>";
+                                                    echo "<td></td>";
+                                                    echo "<td>".$row['producto']."</td>";
+                                                    echo "<td>".$row['producto']."</td>";
+                                                    echo "<td>".$row['num_conexion']."</td>";
+                                                    echo "<td>".$row['num_facturacion']."</td>";
+                                                    echo "<td>".$row['direccion']."</td>";
+                                                    echo "<td>".$row['est']."</td>";
+                                                    echo "<td>".$row['tecnologia']."</td>";
+                                                    echo "<td></td>";
+                                                    echo "<td>".$row['estado']."</td>";
+                                                    echo "<td></td>";
+                                                    echo "<td></td>";
+                                                    echo "<td></td>";
+                                                    echo "<td></td>";
+                                                    echo "<td class='semaforo semaforo-co'></td>";
+                                                    echo "</tr>";
+                                                }
                                             }
-                                        }
-                                        ?>
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="items-info items-sopor">
+                        <div class="cabecera">
+                            <h5> 
+                            <img src="./assets/img/rule.svg" alt="" class="menus-cabecera">
+                            Soporte Técnico</h5>
+                            <img src="./assets/img/Group 10.svg" alt="parlante-audio-etb" class="img-audio" id="img-info-dia" onclick="alertAudio('au-info-dia', 'img-info-dia')">
+                        </div>
+                        <div class="body-items-inf">
+                            <div class="contet content-info" id="con-sopo-inter">
+                            <?php
+                                $sql2 = mysqli_query($db,"SELECT cuenta.central, cuenta.equipo, cuenta.molecula, pqr.tipo_pqr, pqr.estado_pqr FROM cuenta INNER JOIN pqr ON cuenta.id = pqr.cuenta_id");
+                                if($sql2->num_rows > 0){
+                                    $eye = 0;
+                                    while($row3 = $sql2->fetch_assoc()){
+                                        if($row3['tipo_pqr'] == 1){
+                                            $eye1 = "<i class='fa-solid fa-eye eye-color'></i>";
+                                        }elseif($row3['tipo_pqr'] == 2){
+                                            $eye2 = "Si <i class='fa-solid fa-eye eye-color'></i>";
+                                        }else{
+                                            $eye3 = "1 <i class='fa-solid fa-eye eye-color'></i>";
+                                        }
+                                        echo "<div class='content-item-info'>";
+                                        echo "<label>Central:</label> <span>" .$row3['central']. "</span><br>";
+                                        echo "<label>Equipo:</label> <span>" .$row3['equipo']. "</span><br>";
+                                        echo "<label>Molécula:</label> <span>" .$row3['molecula']. "</span><br>";
+                                        echo "<label>Falla Masiva:</label> <span>".$eye1."</span><br>";
+                                        echo "</div>";
+
+                                        echo "<div class='content-item-info'>";
+                                        echo "<label>Visita Abierta:</label> <span>" .$eye2. "</span><br>";
+                                        echo "<label>PQRs Falla Técnica:</label> <span>" .$eye3. "</span><br>";
+                                        echo "<label>Reportar Falla:</label> <span>" .$row3['']. "</span><br>";
+                                        echo "</div>";
+                                    }
+                                }
+                            ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="items-info items-sopor">
+                        <div class="cabecera">
+                            <h5> 
+                            <img src="./assets/img/rule.svg" alt="" class="menus-cabecera">
+                            Datos Facturación</h5>
+                            <img src="./assets/img/Group 10.svg" alt="parlante-audio-etb" class="img-audio" id="img-info-dia" onclick="alertAudio('au-info-dia', 'img-info-dia')">
+                        </div>
+                        <div class="body-items-inf">
+                            <div class="contet content-info" id="con-sopo-inter">
+                            <?php
+                                $sql4 = mysqli_query($db,"SELECT CONCAT(nombre, ' ', apellido), cuenta.num_facturacion, cuenta.direccion, cuenta.est, cuenta.estado, cuenta.titular, cuenta.num_conexion, usuario.documento, usuario.email, usuario.departamento, usuario.ciudad, usuario.barrio  FROM usuario INNER JOIN cuenta ON usuario.id = cuenta.titular");
+                                if($sql4->num_rows > 0){
+                                    while($row4 = $sql4->fetch_assoc()){
+                                        echo "<div class='content-item-info'>";
+                                        echo "<label>Cuenta Facturacion:</label> <span>" .$row4['num_facturacion']. "</span><br>";
+                                        echo "<label>Estado Cta Facturacion:</label> <span>" .$row4['estado']. "</span><br>";
+                                        echo "<label>Ciclo:</label> <span>" .$row4['']. "</span><br>";
+                                        echo "<label>Dirección Facturación:</label> <span>" .$row4['direccion']. "</span><br>";
+                                        echo "<label>Tipo Factura:</label> <span>" .$row4['']. "</span><br>";
+                                        echo "<label>Tipo de Envío:</label> <span>" .$row4['']. "</span><br>";
+                                        echo "<label>Mora:</label> <span>" .$row4['']. "</span><br>";
+                                        echo "<label>Email Facturación:</label> <span>" .$row4['email']. "</span><br>";
+                                        echo "<label>Pago Recurrente:</label> <span>" .$row4['']. "</span><br>";
+                                        echo "<label>Jerarquía Facturación:</label> <span>" .$row4['']. "</span><br>";
+                                        echo "<label>Cuenta Padre:</label> <span>" .$row4['num_facturacion']. "</span><br>";
+                                        echo "<label>Mensaje Variación Factura:</label> <span>" .$row4['']. "</span><br>";
+                                        echo "</div>";
+
+                                        echo "<div class='content-item-info'>";
+                                        echo "<label>Frecuencia:</label> <span>" .$row4['']. "</span><br>";
+                                        echo "<label>Departamento:</label> <span>" .$row4['departamento']. "</span><br>";
+                                        echo "<label>Ciudad:</label> <span>" .$row4['ciudad']. "</span><br>";
+                                        echo "<label>Barrio:</label> <span>" .$row4['barrio']. "</span><br>";
+                                        echo "<label>Estrato:</label> <span>" .$row4['est']. "</span><br>";
+                                        echo "</div>";
+
+                                        echo "<div class='content-item-info'>";
+                                        echo "<label>Día de Corte:</label> <span>" .$row4['']. "</span><br>";
+                                        echo "<label>Cliente Migrado :</label> <span>" .$row4['']. "</span><br>";
+                                        echo "</div>";
+                                    }
+                                }
+                            ?>
                             </div>
                         </div>
                     </div>

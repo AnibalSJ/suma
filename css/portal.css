@@ -64,6 +64,8 @@
     display: flex;
 }
 .oculto{
-    display: none;
-    
+    display: none;   
+}
+.eye-color{
+    color:#F36F31;
 }
