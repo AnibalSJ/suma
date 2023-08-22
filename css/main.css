@@ -75,6 +75,8 @@ body{
     column-gap: 10px;
     grid-column: 1/3;
     font-family: 'Poppins';
+    position: fixed;
+    z-index: 1;
 }
 .con-info-audios p{
     width: 100%;
@@ -90,6 +92,8 @@ body{
 
 .header{
     background: var(--blue-os-etb);
+    grid-column: 2/3;
+    grid-row: 2/3;
     width: 100%;
     height: 55px;
     display: grid;
@@ -117,11 +121,14 @@ body{
 }
 .sidebar-m{
   background: #0077C6;
-  width: 100%;
+  width: 245px;
   height: calc(100vh - 60px);
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
   grid-row: 2/4;
+  position: fixed;
+  left: 0px;
+  top: 60px;
 }
 .head-side{
   display: grid;
@@ -134,7 +141,7 @@ body{
   padding-bottom: 10px;
 }
 .head-head-side img{
-  width: 80px;
+  width: 60px;
 }
 .head-info-user{
   display: grid;
@@ -173,16 +180,22 @@ body{
 }
 .body-side{
   width: 100%;
-  overflow-y: scroll;
-  height: calc(100% - 240px);
+  overflow-y: auto;
+  height: calc(100% - 201.2px);
   padding-top: 20px;
   display: grid;
-  grid-auto-rows: 50px;
-  row-gap: 20px;
+  grid-auto-rows: 25px;
+  row-gap: 30px;
+}
+.disivision-tittle{
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 20px;
+  color: white;
 }
 .body-side .item-side{
   display: grid;
-  grid-template-columns: 30px 110px 30px;
+  grid-template-columns: 30px 1fr 30px;
   align-items: center;
   column-gap: 20px;
 }
@@ -190,16 +203,31 @@ body{
   width: 20px;
   margin-left: 10px;
 }
+.img-drowndonw{
+  width: 15px !important;
+  margin: 0px !important;
+}
 .body-side .item-side p{
   margin: 0px;
   color: white;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
 }
 .foo-side{
   width: 100%;
   height: 35px;
+  background-color: white;
+  padding-top: 7px;
+}
+.content-foo{
   background:var(--orange-etb);
+  height: 28px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+}
+.content-foo a img{
+  width: 20px;
 }
 /* Modal succes */
 .modal-loading{
@@ -371,8 +399,9 @@ body{
     color: white;
     overflow-x: hidden;
     margin-top: 20px;
-}
-.item-bread{
+  }
+  .item-bread{
+    text-decoration: none !important;
     padding: 0px 20px;
     -webkit-transform: skew(20deg);
     -moz-transform: skew(20deg);
@@ -587,7 +616,7 @@ a{
 
   .con-table{
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     /* display: none; */
     max-width: 100%;
     min-height: 100px;
@@ -642,7 +671,7 @@ a{
 }
 /* Botones de avace o retorno */
 .items-info{
-  border: 3px solid var(--orange-etb);
+  border: 2px solid var(--orange-etb);
   border-radius: 25px;
   position: relative;
   width: 100%;
@@ -652,13 +681,32 @@ a{
   top: -22px;
   left: 28px;
   background: white;
-  padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 60px;
+  grid-template-columns: 1fr 45px;
   column-gap: 10px;
+  grid-template-rows: 40px;
+  align-items: center;
+  padding: 0px 10px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.cabecera img{
-  margin-top: -10px;
+.items-sopor .cabecera{
+  border: 2px solid transparent;
+}
+
+.items-sopor .cabecera h5{
+  cursor: pointer;
+
+}
+.items-sopor .cabecera:hover{
+  border: 2px solid var(--orange-etb);
+  border-radius: 15px;
+  transition: all 0.6;
 }
 .cabecera h5{
   color: #F26922;
@@ -752,7 +800,6 @@ a{
 }
 .menus-cabecera{
   height: 25px;
-  margin-top: 30px;
   cursor: pointer;
 }
 .main-principal-portal{
@@ -808,3 +855,123 @@ a{
   background: #fbff00;
   color: #46b8da;
 }
+
+
+  #wait-text{
+    display: none;
+  }
+  .alert-flotante{
+    position: fixed;
+    left: -37680vw;
+    top: 400px;
+    display: flex;
+    z-index: 10;
+    align-items: center;
+    column-gap: 20px;
+    /* display: none; */
+    transition: all 2s;
+}
+.etb-flotant{
+    background: var(--gray-etb);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.3);
+}
+.etb-flotant-active{
+    transition: all 0.6s;
+    left: 5vw !important;
+    top: 200px !important;
+    z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 !important;
+}
+.etb-flotant img{
+    width: 70%;
+}
+.mensaje-parlante{
+    background: rgba(70, 183, 218, 0.849);
+    font-family: Arial, Helvetica, sans-serif;
+    width: 250px;
+    padding: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 100%;
+    overflow: hidden;
+    transition: all 0.6s;
+    /* max-height: 112px; */
+}
+.mensaje-parlante p{
+    width: 100%;
+    margin: 0px;
+    font-weight: 600;
+    font-family: 'Poppins';
+    /* display: flex; */
+    /* align-content: center; */
+    /* height: 10px; */
+}
+.con-close-alert{
+  background: #CC2E33;
+  border-radius: 50%;
+  padding: 2px;
+  margin-left: -15px;
+  margin-top: -110px;
+  cursor: pointer;
+}
+.con-close-alert img{
+  width: 30px;
+}
+  @media (min-width: 1200px){
+    /* Alerta */
+  .alert-flotante{
+      position: fixed;
+      left: 34vw;
+      top: 200vh;
+      display: flex;
+      z-index: 10;
+      align-items: center;
+      column-gap: 20px;
+      /* display: none; */
+      transition: all 2s;
+  }
+  .etb-flotant{
+      background: var(--gray-etb);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: scale(1.3);
+  }
+  .etb-flotant-active{
+      transition: all 0.6s;
+      left: 34vw !important;
+      top: calc(100vh - 140px) !important;
+  }
+  .etb-flotant img{
+      width: 70%;
+  }
+  .mensaje-parlante{
+      background: rgba(70, 183, 218, 0.849);
+      font-family: Arial, Helvetica, sans-serif;
+      width: 450px;
+      padding: 20px;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 100%;
+      overflow: hidden;
+      transition: all 0.6s;
+      /* max-height: 112px; */
+  }
+  .mensaje-parlante p{
+      width: 100%;
+      margin: 0px;
+      font-weight: 600;
+      font-family: 'Poppins';
+      /* display: flex; */
+      /* align-content: center; */
+      /* height: 10px; */
+}
+  }

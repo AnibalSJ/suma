@@ -1,0 +1,103 @@
+.con-sp-n{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px;
+    padding: 130px 50px 50px 50px;
+}
+.header-p{
+    border-bottom: 1px solid #5e6f7e55;
+}
+.header-p .info-u{
+    display: grid;
+    grid-template-columns: 350px 300px;
+    row-gap: 7px;
+    column-gap: 50px;
+    padding: 10px 80px;
+}
+.header-p .info-u label{
+    color: var(--orange-etb);
+    font-weight: 700;
+    font-size: 15px;
+}
+.header-p .info-u p{
+    margin: 0px;
+    font-weight: 650;
+    color: #0077C6;
+    font-size: 14px;
+}
+.content-p{
+    padding: 40px 40px;
+}
+.content-p h4{
+    color: var(--orange-etb);
+    margin-top: 20px;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+.btn_clasic{
+    width: 100%;
+    border: none;
+    height: 40px;
+    border-radius: 12px;
+    background-color: var(--blue-os-etb);
+    color: white;
+}   
+
+.btn_orage_bg{
+    background-color: var(--orange-etb);
+}
+#con-sopo-info{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 25px;
+    row-gap: 10px;
+}
+#con-sopo-info p{
+    margin: 0px;
+    height: 100%;
+}
+.con-tree-colms{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    column-gap: 30px;
+    row-gap: 30px;
+}
+.con-tree-colms .items-actions-soporte{
+    grid-column: 1/4;
+    border-top: 1px solid #0000004d;
+    padding-top: 20px;
+    grid-template-columns: 100px 40px 50px;
+    column-gap: 10px;
+    justify-content: flex-end;
+    grid-template-rows: 40px;
+    position: relative;
+}
+.info__sem{
+    display: flex;
+    justify-content: space-between;
+}
+.con-tree-colms .con-table{
+    margin: 0px;
+}
+.con-tree-colms .six__actions{
+    grid-template-columns: 160px 40px 1fr 110px 40px 50px;
+}
+.con-tree-colms .seven__actions{
+    grid-template-columns: 160px 40px 1fr 110px 40px 110px 40px 50px;
+}
+.items__actions_four{
+    display: grid;
+    grid-template-columns: 110px 40px 110px 40px 50px !important;
+}
+.table-sopor-logs tr th{
+    text-align: left;
+    background: transparent;
+    color: black;
+    border: none !important;
+    border-bottom: 2px solid #0077C6 !important;
+}
+.table-sopor-logs tbody tr td{
+    border: none !important;
+    border-bottom: 2px solid #0077C6 !important;
+}

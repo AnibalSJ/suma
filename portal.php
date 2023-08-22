@@ -11,13 +11,24 @@
     $num_orden = $_POST['num_orden'];
 
     $mostrarSeccion = false;
+    $documento = '';
+    $cuenta = '';
 
     $sql = mysqli_query($db,"SELECT * FROM usuario WHERE tipo_documento = '$doc_type' && documento = '$num_doc' || telefono_fijo = '$num_conex'");
+    
+    if(isset($_POST['datosEnviados'])){
+        if($_POST['datosEnviados'] == 1){
+            $nr = mysqli_num_rows($sql);
+            $mostrarSeccion = true;
+            // var_dump($mostrarSeccion);
+        }
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $nr = mysqli_num_rows($sql);
-        $mostrarSeccion = true;
-
+        if ($mostrarSeccion) {
+            echo "<script>";
+            // echo "$('#seccion').removeClass('oculto');";
+            // echo "document.getElementById('seccion').classList.remove('oculto')";
+            echo "</script>";
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -41,6 +52,7 @@
             include('./components/infoAudios.php');
             include('./components/sidebar.php');
             include('./components/navbar.php');
+
         ?>
 
         <div class="main-principal-portal">
@@ -69,10 +81,11 @@
                         <button type="submit" name="btn_search" class="btn-clasic" style="background: var(--blue-os-etb);"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>  BUSCAR</button>
                         <button class="btn-clasic"><i class="fa-solid fa-broom" style="color: #ffffff;"></i>LIMPIAR</button>
                     </div>
+                    <input type="text" name="datosEnviados" id="" value="1" style="display: none;">
                 </form>
                 
-                <div id="seccion" class="oculto">
-                    <div class="items-info items-sopor">
+                <div id="seccion" class="datos-usuario">
+                    <div class="items-info items-sopor item-datas">
                         <div class="cabecera">
                         <h5> 
                             <img src="./assets/img/rule.svg" alt="" class="menus-cabecera">
@@ -81,11 +94,12 @@
                         </div>
                     
                         <div class="body-items-inf">
-                            <div class="contet content-info" id="con-sopo-inter">
+                            <div class="content-info" id="con-sopo-inter">
                                     <?php
                                         if($sql->num_rows > 0){
                                             while($row = $sql->fetch_assoc()){
-                                                echo "<div class='content-item-info'>";
+                                                $documento = $row['id'];
+                                                echo "<div class='content-item-info item-1'>";
                                                 echo "<label>Nombre:</label> <span>" .$row['nombre']. " " .$row['apellido']. "</span><br>";
                                                 echo "<label>Segmento UEN:</label> <span>" .$row['uen']. "</span><br>";
                                                 echo "<label>Segmento:</label> <span>" .$row['']. "</span><br>";
@@ -95,7 +109,7 @@
                                                 echo "<button>Documentos Cliente</button>";
                                                 echo "</div>";
 
-                                                echo "<div class='content-item-info'>";
+                                                echo "<div class='content-item-info item-2'>";
                                                 echo "<label>Celular:</label> <span>" .$row['celular']. " " . "</span><br>";
                                                 echo "<label>Tipo Documento:</label> <span>" .$row['tipo_documento']. "</span><br>";
                                                 echo "<label>email:</label> <span>" .$row['email']. "</span><br>";
@@ -109,7 +123,7 @@
                                                     </select>";
                                                 echo "</div>";
 
-                                                echo "<div class='content-item-info'>";
+                                                echo "<div class='content-item-info item-2'>";
                                                 echo "<label>UEN:</label> <span>" .$row['uen']. "</span><br>";
                                                 echo "<label>Departamento:</label> <span>" .$row['departamento']. "</span><br>";
                                                 echo "<label>Ciudad:</label> <span>" .$row['ciudad']. "</span><br>";
@@ -126,7 +140,7 @@
                         </div>
                     </div>
 
-                    <div class="items-info items-sopor">
+                    <div class="items-info items-sopor item-produc">
                         <div class="cabecera">
                             <h5> 
                             <img src="./assets/img/rule.svg" alt="" class="menus-cabecera">
@@ -134,9 +148,9 @@
                             <img src="./assets/img/Group 10.svg" alt="parlante-audio-etb" class="img-audio" id="img-info-dia" onclick="alertAudio('au-info-dia', 'img-info-dia')">
                         </div>
                         <div class="body-items-inf">
-                            <div class="contet" id="con-sopo-inter">
+                            <div class="table-product" id="con-sopo-inter">
                                 <div class="con-table">
-                                    <table class="table-general table-sopor">
+                                    <table class="table-general table-sopor table-produc">
                                         <tr>
                                             <th>Front</th>
                                             <th>Documento Anterior </th>
@@ -156,10 +170,13 @@
                                             <th>Nivel Riesgo</th>
                                         </tr>
                                         <tbody>
-                                            <?php
-                                            $sql1 = mysqli_query($db,"SELECT CONCAT(nombre, ' ', apellido), cuenta.num_facturacion, cuenta.front, cuenta.producto, cuenta.direccion, cuenta.est, cuenta.tecnologia, cuenta.estado, cuenta.central, cuenta.equipo, cuenta.molecula, cuenta.titular, cuenta.num_conexion, usuario.documento FROM usuario INNER JOIN cuenta ON usuario.id = cuenta.titular");
+                                        <?php
+                                            $sql1 = mysqli_query($db,"SELECT CONCAT(nombre, ' ', apellido), usuario.id as id_user, cuenta.front, cuenta.producto, cuenta.direccion, cuenta.est, cuenta.tecnologia, cuenta.estado, cuenta.central, cuenta.equipo, cuenta.molecula, cuenta.titular, cuenta.num_conexion, usuario.documento FROM usuario INNER JOIN cuenta ON usuario.id = cuenta.titular
+                                            WHERE titular = $documento
+                                            ");
                                             if($sql1->num_rows > 0){
                                                 while($row = $sql1->fetch_assoc()){
+                                                    $cuenta = $row['id_user'];
                                                     echo "<tr>";
                                                     echo "<td>".$row['front']."</td>";
                                                     echo "<td></td>";
@@ -176,7 +193,7 @@
                                                     echo "<td></td>";
                                                     echo "<td></td>";
                                                     echo "<td></td>";
-                                                    echo "<td class='semaforo semaforo-co'></td>";
+                                                    echo "<td><div class='semaforo semaforo-co'></div></td>";
                                                     echo "</tr>";
                                                 }
                                             }
@@ -195,38 +212,55 @@
                             <img src="./assets/img/Group 10.svg" alt="parlante-audio-etb" class="img-audio" id="img-info-dia" onclick="alertAudio('au-info-dia', 'img-info-dia')">
                         </div>
                         <div class="body-items-inf">
-                            <div class="contet content-info" id="con-sopo-inter">
-                            <?php
-                                $sql2 = mysqli_query($db,"SELECT cuenta.central, cuenta.equipo, cuenta.molecula, pqr.tipo_pqr, pqr.estado_pqr FROM cuenta INNER JOIN pqr ON cuenta.id = pqr.cuenta_id");
-                                if($sql2->num_rows > 0){
-                                    $eye = 0;
-                                    while($row3 = $sql2->fetch_assoc()){
-                                        if($row3['tipo_pqr'] == 1){
-                                            $eye1 = "<i class='fa-solid fa-eye eye-color'></i>";
-                                        }elseif($row3['tipo_pqr'] == 2){
-                                            $eye2 = "Si <i class='fa-solid fa-eye eye-color'></i>";
-                                        }else{
-                                            $eye3 = "1 <i class='fa-solid fa-eye eye-color'></i>";
+                            <div class="contet content-info conten-info-pqr" id="con-sopo-inter">
+                                <?php
+                                    $sql = "SELECT cuenta.central, cuenta.equipo, cuenta.molecula, tipo_pqr, pqr.estado_pqr, visita.estado_visita, pqr.id_visita FROM cuenta INNER JOIN pqr ON cuenta.id = pqr.cuenta_id INNER JOIN visita on cuenta.id = visita.cuenta_id WHERE titular = $cuenta and estado_pqr = 1";
+                                    
+                                    $soporteTec = $db->query($sql);
+                                    
+                                    if($soporteTec->num_rows > 0){
+                                        
+                                        foreach($soporteTec as $row){
+                                            echo "<div class='content-item-info'>";
+                                            echo "<label>Central:</label> <span>" .$row['central']. "</span><br>";
+                                            echo "<label>Equipo:</label> <span>" .$row['equipo']. "</span><br>";
+                                            echo "<label>Molécula:</label> <span>" .$row['molecula']. "</span><br>";
+                                            
+                                            echo "<label>Falla Masiva:</label> <span>"."</span><br>";
+                                            echo "</div>";
+                                            
+                                            echo "<div class='content-item-info'>";
+                                            
+                                            $falla = $row['tipo_pqr'];
                                         }
-                                        echo "<div class='content-item-info'>";
-                                        echo "<label>Central:</label> <span>" .$row3['central']. "</span><br>";
-                                        echo "<label>Equipo:</label> <span>" .$row3['equipo']. "</span><br>";
-                                        echo "<label>Molécula:</label> <span>" .$row3['molecula']. "</span><br>";
-                                        echo "<label>Falla Masiva:</label> <span>".$eye1."</span><br>";
-                                        echo "</div>";
+                                        
+                                    }else{
+                                        $sql = "SELECT cuenta.central, cuenta.equipo, cuenta.molecula FROM cuenta WHERE titular = $cuenta";
 
-                                        echo "<div class='content-item-info'>";
-                                        echo "<label>Visita Abierta:</label> <span>" .$eye2. "</span><br>";
-                                        echo "<label>PQRs Falla Técnica:</label> <span>" .$eye3. "</span><br>";
-                                        echo "<label>Reportar Falla:</label> <span>" .$row3['']. "</span><br>";
-                                        echo "</div>";
+                                        $soporteTec = $db->query($sql);
+                                        
+                                        foreach($soporteTec as $row){
+                                            echo "<div class='content-item-info'>";
+                                            echo "<label>Central:</label> <span>" .$row['central']. "</span><br>";
+                                            echo "<label>Equipo:</label> <span>" .$row['equipo']. "</span><br>";
+                                            echo "<label>Molécula:</label> <span>" .$row['molecula']. "</span><br>";
+                                            
+                                            echo "<label>Falla Masiva:</label> <span>"."</span><br>";
+                                            echo "</div>";
+                                            
+                                            echo "<div class='content-item-info'>";
+                                            echo "<label>Visita Abierta:</label> <span></span><br>";
+                                            echo "<label>PQRs Falla Técnica:</label> <span></span><br>";
+                                            echo "<label>Reportar Falla:</label> <span> <a href='./reportarFalla.php?cliente=" . $documento ."'><i class='fa-solid fa-eye eye-color'></i></a> </span><br>";
+                                            echo "</div>";
+                                        }
                                     }
-                                }
-                            ?>
+                                    
+                                ?>
                             </div>
                         </div>
                     </div>
-                    <div class="items-info items-sopor">
+                    <div class="items-info items-sopor item-fact">
                         <div class="cabecera">
                             <h5> 
                             <img src="./assets/img/rule.svg" alt="" class="menus-cabecera">
@@ -277,16 +311,10 @@
         </div>
     </div>
 
-    <?php
-        if ($mostrarSeccion) {
-            echo "<script>";
-            echo "document.getElementById('seccion').classList.remove('oculto');";
-            echo "</script>";
-        }
-    ?>
 
     <script src="./bootstrap/jquery.js"></script>
     <script src="./bootstrap/bootstrap.bundle.min.js"></script>
     <script src="main.js"></script>
+
 </body>
 </html>
