@@ -21,12 +21,12 @@
 .content-item-info label{
     color: #F36F31;
     font-weight: bold;
-    float: right;
+    /* float: right;
+    right: 380px; */
     position: relative;
-    right: 380px;
+
 }
 .content-item-info span{
-    margin-left: 210px;
     color: #0077C6;
     margin-bottom: 10px;
 }
@@ -35,7 +35,7 @@
     padding: 3px 5px;
     border: 1px solid #0000004d;
     color: #FFFFFF;
-    margin-right: 50px;
+    margin-right: 15px;
 }
 .content-item-info select{
     display: inline-block;
@@ -52,20 +52,277 @@
 	border:1px solid #00000049;
     border-radius: 3px;
     position: relative;
-    left: 210px;
     transition: all 0.25s ease
 }
-.content-item-info{
+/* .content-item-info{
     margin: 10px;
     margin-right: 30px;
-    width: 580px;
-}
-.body-items-inf .content-info{
-    display: flex;
-}
+    width: 580px; 
+} */
+
 .oculto{
     display: none;   
 }
+.datos-usuario{
+    margin-top: 50px;
+}
 .eye-color{
     color:#F36F31;
+}
+
+.content-info{    
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+}
+.table-product{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1;
+}
+.content-soport-fact{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+}
+.content-soport-fact .content-soport{
+    height: 200px;
+}
+.content-soport-fact .content-soport .content-soport-sop{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+}
+.content-fact{
+    height: 550px;
+}
+.content-soport-fact .content-fact-fac{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:"item-1 item-2"
+                        "item-1 item-3"
+                        "item-4 item-5";
+}
+.content-soport-fact .content-fact-fac .item-1{
+    grid-area: item-1;
+}
+.content-soport-fact .content-fact-fac .item-2{
+    grid-area: item-2;
+}
+.content-soport-fact .content-fact-fac .item-3{
+    grid-area: item-3;
+}
+.content-soport-fact .content-fact-fac .item-4{
+    grid-area: item-4;
+}
+.content-soport-fact .content-fact-fac .item-5{
+    grid-area: item-5;
+}
+#modal-visita .modal-dialog{
+    display: flex;
+    justify-content: center;
+}
+#modal-visita .modal-title{
+    width: 100%;
+    text-align: center;
+    color: #1285B6;
+}
+#modal-visita .modal-footer{
+    border: 0px solid;
+    display: flex;
+    column-gap: 20px;
+    justify-content: center;
+}
+
+#modal-visita .modal-footer button{
+    background: #f26821;
+    color: white;
+    border: none;
+}
+#modal-visita .modal-body .content-modal  label{
+    color: #F36F31;
+    font-weight: bold;
+    display: block;
+}
+.descrip-pqr label{
+    color: #F36F31;
+    font-weight: bold;
+}
+.descrip-pqr p{
+    color: #0077C6;
+    font-weight: bold;
+}
+.content-modal{
+    padding: 20px;
+}
+.content-modal span select{
+    display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  	padding: 2px 10px;
+  	outline: 0; 
+  	border: 0;
+	border-radius: 0;
+	background: #ffffff;
+	color: #0077C6;
+	font-size: 1em;
+	color: #0077C6;
+	border:1px solid #0077C6;
+    border-radius: 3px;
+    position: relative;
+    transition: all 0.25s ease;
+}
+.content-modal span input{
+    color: #0077C6;
+    border: 1px solid #0077C6;
+    width: 256px;
+}
+.content-modal .select-relacion select{
+    width: 150px;
+}
+.content-modal textarea{
+    width: 100%;
+    padding: 15px 10px;
+    color: #0077C6;
+    font-size: 16px;
+    border: 1px solid #0077C6;
+    border-radius: 3px;
+    outline: 0px;
+}
+.content-modal .solicitante-search{
+    border: 1px solid #f26821;
+    width: 376px;
+    color: #0077C6;
+    padding: 2px 10px;
+    outline: 0;
+    cursor: pointer;
+}
+.content-modal button{
+    background: #11A1D8;
+    border: 1px solid #0077C6;
+    border-radius: 2px;
+}
+.content-modal button:hover{
+    background: #054a79;
+    transition: all ease 1s;
+}
+.content-modal button i{
+    color: #ffffff;
+    
+}
+.table-search{
+    border: 1px solid #0000004d;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+.content-table-search{
+    border: 1px solid #11A1D8;
+}
+.barra-busqueda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.barra-busqueda label {
+    width: 60px;
+    margin-right: 10px;
+}
+.barra-busqueda input {
+    width: 200px;
+    border: 1px solid #ccc;
+}
+.content-modal .con-table .table-general{
+    margin-top: 15px;
+}
+.content-modal .con-table .table-general tr th{
+    height: 30px;
+}
+.crear-pqr{
+    margin-top: 10px;
+    background-color: #f26821;
+    color: #fff;
+    padding: 3px;
+    border: solid 1px #0000004d;
+    border-radius: 3px;
+    width: 55px;
+}
+#modal-actualizar{
+    background: #00000049;
+}
+#modal-actualizar .modal-lg{
+    width: 450px;
+}
+#modal-actualizar .modal-header{
+    background: #11A1D8;
+}
+#modal-actualizar .modal-header .modal-title{
+    color: #fff;
+    justify-content: left !important;
+}
+#modal-actualizar .modal-lg .modal-content{
+    height: 450px;
+}
+#modal-actualizar .editar-contact{
+    padding: 15px;
+}
+#modal-actualizar .editar-contact span select{
+    display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  	padding: 2px 10px;
+  	outline: 0; 
+  	border: 0;
+	border-radius: 0;
+	background: #ffffff;
+	color: #0077C6;
+	font-size: 1em;
+	color: #0077C6;
+	border:1px solid #0077C6;
+    border-radius: 3px;
+    position: relative;
+    transition: all 0.25s ease;
+    margin-bottom: 10px;
+}
+#modal-actualizar .editar-contact label{
+    color: #F36F31;
+    font-weight: bold;
+    display: block;
+}
+#modal-actualizar .editar-contact input{
+    width: 100%;
+    border: 1px solid #0077C6;
+    color: #0077C6;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+.autorizacion{
+    text-align: right;
+}
+#modal-actualizar .editar-contact .modal-footer .btn-guardar{
+    background: #F36F31;
+    border: 1px solid #00000049;
+    text-align: left;
+    margin-right: 200px;
+    padding: 6px;
+    border-radius: 4px;
+    color: #fff;
+}
+#modal-actualizar .editar-contact .modal-footer .btn-guardar:hover{
+    background: #b14d1f;
+    border: 1px solid #00000049;
+    transition: all 0.25s ease;
+}
+#modal-actualizar .editar-contact .modal-footer .btn-cancelar{
+    background: #11A1D8;
+    border: 1px solid #00000049;
+    margin-left: 20px;
+}
+#modal-actualizar .editar-contact .modal-footer .btn-cancelar:hover{
+    background: #0f6283;
+    transition: all 0.25s ease;
 }
