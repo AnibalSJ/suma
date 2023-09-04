@@ -19,6 +19,17 @@ let audios = [
     'Ajustes WIFI ONT, cuenta con algunas consultas tales como “Equipos conectados” y “ALEPO”, etc.',
     'Cuenta con algunas acciones como "Cambiar tipo de encriptación, "Cambiar estado WIFI" etc.'
     ], // ? Soporte Eficiente 1
+    ['Se muestran los datos del cliente', 
+    'Se muestra la información referente al producto contratado',
+    'Se muestra la información sobre el soporte que se va a brindar',
+    'Se muestra la información referente a la factura del servicio',
+    'Se muestra la información de la pqr si está creada y si no, se muestra un formulario para crear la pqr',
+    'Se da click en la lupa para ver los solicitantes disponibles',
+    'Se verifica todos los datos del solicitante y luego se da click en editar',
+    'Se verifica todos los datos y se actualiza cualquier dato necesario, se autoriza el manejo de los datos y se da click en guardar',
+    'Se da click al botón después de completar todo el formulario y tener el solicitante para crear la pqr',
+    'Aquí se encuentra la información de la pqr que se acabó de crear'
+    ]
 ]
 
 let audioR = false;

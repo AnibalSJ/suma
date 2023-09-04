@@ -396,11 +396,11 @@ body{
     height: 48px;
     align-items: center;
     border-radius: 4px;
-    color: white;
     overflow-x: hidden;
     margin-top: 20px;
   }
   .item-bread{
+    color: white;
     text-decoration: none !important;
     padding: 0px 20px;
     -webkit-transform: skew(20deg);
@@ -422,6 +422,9 @@ body{
 }
 .item-bread:nth-child(3){
     background-color: #59C3E3;
+}
+.item-bread:nth-child(4){
+    color: #11a8f3 !important;
 }
 a{
     text-decoration: none;
