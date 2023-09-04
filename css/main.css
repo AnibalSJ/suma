@@ -975,3 +975,19 @@ a{
       /* height: 10px; */
 }
   }
+
+  .btn-flot{
+    width: 130px;
+    text-align: center;
+    display: grid;
+    padding: 10px;
+    position: fixed;
+    background: var(--orange-etb);
+    font-size: 18px;
+    color: white;
+    font-weight: 600px;
+    border-radius: 15px 15px 0px 0px;
+    top: calc(100vh - 37px);
+    cursor: pointer;
+    left: 300px;
+}

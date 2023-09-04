@@ -2,7 +2,7 @@
     display: grid;
     justify-content: center;
     grid-template-columns: 100%;
-    grid-template-rows: 100px;
+    grid-template-rows: 80px;
     padding: 130px 50px 50px 50px;
 }
 .header-p{
@@ -15,12 +15,12 @@
     column-gap: 50px;
     padding: 10px 80px;
 }
-.header-p .info-u label{
+.info-u label{
     color: var(--orange-etb);
     font-weight: 700;
     font-size: 15px;
 }
-.header-p .info-u p{
+ .info-u p{
     margin: 0px;
     font-weight: 650;
     color: #0077C6;
@@ -100,4 +100,80 @@
 .table-sopor-logs tbody tr td{
     border: none !important;
     border-bottom: 2px solid #0077C6 !important;
+}
+.content-p{
+    height: 700px;
+    overflow-y: auto;
+}
+.recomendador{
+    width: 100% !important;    
+    height: 700px;
+}
+#modal-flujo #modal-dialog-flujo{
+    max-width: none !important;
+    width: 800px;
+    margin-left: 300px !important;
+    cursor: pointer;
+}
+#btn-close-flujo{
+    background-color: var(--orange-etb);
+    color: white !important;
+    justify-content: flex-start !important;
+}
+#btn-close-flujo h1{
+    color: white !important;
+
+}
+.modal-dialog-exito-s{
+    display: grid !important;
+    align-items: flex-end !important;
+}
+.content-info-sol{
+    background-color: white;
+    width: calc(100vw - 345px);
+    height: 400px;
+    position: fixed;
+    top: 180px;
+    z-index: 2000;
+    left: 255px;
+    display: none;
+}
+#modal-info-soluci{
+    z-index: 2001 !important;
+}
+.info-u{
+    display: grid;
+    grid-template-columns: 350px 300px;
+    row-gap: 7px;
+    column-gap: 50px;
+    padding: 10px 80px;
+}
+.info-repor{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 20px 50px 20px 35px;
+}
+.con-btn-adj{
+    display: grid;
+    justify-content: flex-end;
+    grid-template-rows: 35px;
+}
+.con-btn-adj label{
+    color: white;
+    background-color: var(--orange-etb);
+    border-radius: 9px;
+    border-style: outset;
+    padding: 5px 12px;
+}
+.info-repor textarea, .info-repor input{
+    border: 2px solid var(--orange-etb);
+    border-radius: 8px;
+}
+.info-repor select{
+    border: 2px solid #0077C6;
+    color: #0077C6;
+    border-radius: 8px;
+}
+.table-solui{
+    padding: 25px 80px !important;
 }

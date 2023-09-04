@@ -38,6 +38,7 @@ let estadoPqr = false;
 let estadoLog = false;
 let sidebarSoporte = document.querySelector('.sidebar-soporte');
 let estadodrownprueba = false;
+var contentMainS = document.getElementById('content-s-main');
 
 
 function itemInfoSoporte(contenedor){
@@ -64,23 +65,26 @@ document.getElementById('btn-consul-equipos').addEventListener('click', event=>{
     if(estadoEquipos){
         estadoEquipos = false;
         $('#modal-consulta-equipos').removeClass('deshide');
-        // document.getElementById("modal-body-soporte").style['overflow-y'] = "scroll";
-        // window.scrollTo(0,0)
-        window.scrollTo(0,0)
+        contentMainS.style['overflow-y'] = "auto";
+
+
     }else{
-        let scrollActual = window.scrollY;
-        // document.getElementById("modal-body-soporte").style['overflow-y'] = "hidden";
+
+        let scrollActual = parseInt(contentMainS.scrollTop);
+        scrollActual = scrollActual - 210;
+
+        contentMainS.style['overflow-y'] = "hidden";
         $('#modal-consulta-equipos').addClass('deshide');
+
         estadoEquipos = true;
-        document.getElementById('modal-consulta-equipos').style.top = scrollActual;
-        // window.scrollTo(0,0)
+        document.getElementById('modal-consulta-equipos').style.top = `${scrollActual}px`;
     }
 })
 document.getElementById('close-caracte-equipo').addEventListener('click', event=>{
     estadoEquipos = false;
     $('#modal-consulta-equipos').removeClass('deshide');
-    document.getElementById("modal-body-soporte").style['overflow-y'] = "scroll";
-    window.scrollTo(0,0)
+    contentMainS.style['overflow-y'] = "auto";
+    ocultarHablador();
 })
 
 document.getElementById('action-interne').addEventListener('click', event =>{
@@ -179,7 +183,7 @@ function modalExitoSoporte(textTitulo, contenidoText, tituloMain){
         document.getElementById('contenido-alerta-cor').appendChild(document.createTextNode('Se procederá a refrescar los semáforos'))
     }else{
         $('#contenido-alerta-cor').empty();
-        // document.getElementById('contenido-alerta-cor').appendChild(document.createTextNode(contenidoText))
+        document.getElementById('contenido-alerta-cor').appendChild(document.createTextNode(contenidoText))
     }
         $(document).ready(function() {
         $('#modal-reapro-serv').modal('toggle')
@@ -200,6 +204,100 @@ function modalExitoSoporte(textTitulo, contenidoText, tituloMain){
     }
     identificadorLogs = identificadorLogs + 1;
     bd.log.push(tempLog);
+    $('#tbody-logs').empty();
+    bd.log.forEach(element=>{
+        tr = document.createElement('tr');
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['fechaInicio']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['fechaFin']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['comando']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['descripcion']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['tipoComando']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['Respuesta']))
+        tr.appendChild(td);
+        
+        document.getElementById('tbody-logs').appendChild(tr);
+    })
+}
+function modalExitoSoporte(textTitulo, contenidoText, tituloMain){
+    if(tituloMain){
+        $('#tittle-main-exit').empty();
+    }else{
+        $('#tittle-main-exit').empty();
+        document.getElementById('tittle-main-exit').appendChild(document.createTextNode('ACC_BTN_'));
+    }
+    $('#titulo-alerta-corr').empty();
+    document.getElementById('titulo-alerta-corr').appendChild(document.createTextNode(textTitulo))
+    if(contenidoText == false){
+        $('#contenido-alerta-cor').empty();
+        document.getElementById('contenido-alerta-cor').appendChild(document.createTextNode('Se procederá a refrescar los semáforos'))
+    }else{
+        $('#contenido-alerta-cor').empty();
+        document.getElementById('contenido-alerta-cor').appendChild(document.createTextNode(contenidoText))
+    }
+        $(document).ready(function() {
+        $('#modal-reapro-serv').modal('toggle')
+    });
+    var today = new Date();
+ 
+    // obtener la fecha y la hora
+    var now = today.toLocaleString();
+    // Logs
+    tempLog = {
+        id: identificadorLogs,
+        fechaInicio: now,
+        fechaFin: now,
+        comando: `ACC_BTN_${textTitulo}`,
+        descripcion: textTitulo,
+        tipoComando: 'Estado Plataforma',
+        Respuesta: 'Response: OK',
+    }
+    identificadorLogs = identificadorLogs + 1;
+    bd.log.push(tempLog);
+    $('#tbody-logs').empty();
+    bd.log.forEach(element=>{
+        tr = document.createElement('tr');
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['fechaInicio']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['fechaFin']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['comando']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['descripcion']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['tipoComando']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['Respuesta']))
+        tr.appendChild(td);
+        
+        document.getElementById('tbody-logs').appendChild(tr);
+    })
 }
 
 document.getElementById('btn-transferencia').addEventListener('click', event =>{
@@ -1223,3 +1321,80 @@ document.getElementById('action-prueba-d').addEventListener('click', event =>{
     }
 })
 
+document.getElementById('flujo-btn').addEventListener('click', event =>{
+    $(document).ready(function() {
+        $('#modal-flujo').modal('toggle')
+    });
+})
+document.getElementById('btn-close-flujo').addEventListener('click', event=>{
+    $( document ).ready(function() {
+    $('#modal-flujo').modal('hide')
+    });
+    
+})
+function modalExitoSoporteSolucionado(){
+    $('#content-soluic').css('display', 'block')
+    $( document ).ready(function() {
+        $('#modal-exito-solucionado').modal('toggle')
+        });
+        $( document ).ready(function() {
+            $('#modal-info-soluci').modal('toggle')
+            });
+    var today = new Date();
+ 
+    // obtener la fecha y la hora
+    var now = today.toLocaleString();
+    let textTitulo = 'ACTUALIZACIÓN DE LA VISITA';
+    // Logs
+    tempLog = {
+        id: identificadorLogs,
+        fechaInicio: now,
+        fechaFin: now,
+        comando: `ACC_BTN_${textTitulo}`,
+        descripcion: textTitulo,
+        tipoComando: 'Estado Plataforma',
+        Respuesta: 'Response: OK',
+    }
+    identificadorLogs = identificadorLogs + 1;
+    bd.log.push(tempLog);
+    $('#tbody-logs').empty();
+    bd.log.forEach(element=>{
+        tr = document.createElement('tr');
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['fechaInicio']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['fechaFin']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['comando']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['descripcion']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['tipoComando']))
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(element['Respuesta']))
+        tr.appendChild(td);
+        
+        document.getElementById('tbody-logs').appendChild(tr);
+    })
+}
+
+document.getElementById('btn_exito').addEventListener('click', event=>{
+    if(document.getElementById('val_agenda').value != '' && document.getElementById('val_agenda').value != ' '){
+        document.getElementById('form_pqr_solu').submit();
+
+    }else{
+        $( document ).ready(function() {
+        $('#modal-info-soluci').modal('toggle')
+        });
+    }
+})
