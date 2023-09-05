@@ -12,6 +12,8 @@
     $num_orden = $_POST['num_orden'];
 
     $mostrarSeccion = false;
+    $documento = '';
+    $cuenta = '';
 
     $sql = mysqli_query($db,"SELECT * FROM usuario WHERE tipo_documento = '$doc_type' && documento = '$num_doc' || telefono_fijo = '$num_conex'");
     
@@ -57,6 +59,7 @@
             include('./components/infoAudios.php');
             include('./components/sidebar.php');
             include('./components/navbar.php');
+
         ?>
 
         <div class="main-principal-portal">
@@ -85,6 +88,7 @@
                         <button type="submit" name="btn_search" class="btn-clasic" style="background: var(--blue-os-etb);"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>  BUSCAR</button>
                         <button class="btn-clasic"><i class="fa-solid fa-broom" style="color: #ffffff;"></i>LIMPIAR</button>
                     </div>
+                    <input type="text" name="datosEnviados" id="" value="1" style="display: none;">
                 </form>
                 
                 <div id="seccion" class="oculto datos-usuario">
@@ -150,7 +154,7 @@
                         </div>
                     </div>
 
-                    <div class="items-info items-sopor">
+                    <div class="items-info items-sopor item-produc">
                         <div class="cabecera">
                             <h5> 
 
@@ -191,6 +195,7 @@
                                             $sql1 = mysqli_query($db,"SELECT CONCAT(nombre, ' ', apellido), cuenta.num_facturacion, cuenta.front, cuenta.producto, cuenta.direccion, cuenta.est, cuenta.tecnologia, cuenta.estado, cuenta.central, cuenta.equipo, cuenta.molecula, cuenta.titular, cuenta.num_conexion, usuario.documento FROM usuario INNER JOIN cuenta ON usuario.telefono_fijo = cuenta.num_conexion WHERE tipo_documento = '$doc_type' && documento = '$num_doc' || telefono_fijo = '$num_conex'");
                                             if($sql1->num_rows > 0){
                                                 while($row = $sql1->fetch_assoc()){
+                                                    $cuenta = $row['id_user'];
                                                     echo "<tr>";
                                                     echo "<td>".$row['front']."</td>";
                                                     echo "<td></td>";
@@ -593,10 +598,25 @@
         </div>
     </div>
 
+    <div class="alert-flotante" id="alert-flotante">
+        <div class="etb-flotant etb-flotant-login" id="etb-flotant">
+            <img src="./assets/img/ETB.svg" alt="">
+        </div>
+        <div class="mensaje-parlante msg-parl-log" id="mensaje-parlante">
+            <p id="text-msg-hab">
+                <div class="lds-ellipsis" id="wait-text"><div></div><div></div><div></div><div></div></div>
+            </p>
+        </div>
+        <div class="con-close-alert" onclick="ocultarHablador()">
+            <img src="./assets/img/cross_small.svg" alt="">
+        </div>
+    </div>
+
     
 
     <script src="./bootstrap/jquery.js"></script>
     <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./bootstrap/typed.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/portal.js"></script>
     <script>

@@ -328,8 +328,22 @@
             </div>
         </div>
     </div>
+    <div class="alert-flotante" id="alert-flotante">
+        <div class="etb-flotant etb-flotant-login" id="etb-flotant">
+            <img src="./assets/img/ETB.svg" alt="">
+        </div>
+        <div class="mensaje-parlante msg-parl-log" id="mensaje-parlante">
+            <p id="text-msg-hab">
+                <div class="lds-ellipsis" id="wait-text"><div></div><div></div><div></div><div></div></div>
+            </p>
+        </div>
+        <div class="con-close-alert" onclick="ocultarHablador()">
+            <img src="./assets/img/cross_small.svg" alt="">
+        </div>
+    </div>
     <script src="./bootstrap/jquery.js"></script>
     <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./bootstrap/typed.js"></script>
     <script src="./js/main.js"></script>
 
 </body>

@@ -12,6 +12,7 @@ if(mysqli_affected_rows($db) > 0){
         if($row['usuario_suma'] == $usuario && $row['pass'] == $password){
             $_SESSION['login'] = 1;
             $_SESSION['nombre'] = $row['nombre'];
+            header('Location: ./portal.php');
         }else{
             $_SESSION['errorLogin'] = true;
             header('Location: ./index.php');
