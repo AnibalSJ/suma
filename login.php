@@ -1,10 +1,6 @@
 <?php
 session_start();
-<<<<<<< HEAD
 include('./DB/db.php');
-=======
-include('./DB/conexion.php');
->>>>>>> 7cbe31d2cdca01d1ca13f27306d4e2ac0aa48aa9
 
 $usuario = $_POST['usuario'];
 $password = $_POST['password'];

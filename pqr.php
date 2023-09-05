@@ -27,7 +27,7 @@
         <div class="main-pqr">
             <div class="usuario">
                 <?php
-                    $sql_main = mysqli_query($db, "SELECT U.tipo_documento, U.documento, U.nombre, U.apellido FROM usuario U INNER JOIN cuenta C on U.id = C.titular");
+                    $sql_main = mysqli_query($db, "SELECT U.tipo_documento, U.documento, U.nombre, U.apellido FROM usuario U INNER JOIN cuenta C on U.telefono_fijo = C.num_conexion ");
                         if($sql_main->num_rows > 0){
                             while($row = $sql_main->fetch_assoc()){
                                 echo "<div class=''>";
