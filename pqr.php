@@ -1,6 +1,10 @@
 <?php 
     include('seguridad.php');
     include('DB/db.php');
+
+    $d_t = $_SESSION['user']['doc_type'];
+    $n_d = $_SESSION['user']['num_doc'];
+    $n_x = $_SESSION['user']['num_conex'];
 ?>
 
 <!DOCTYPE html>
@@ -8,12 +12,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/pqr.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
     <link href="./assets/fontawesome-free-6.4.0-web/css/fontawesome.css" rel="stylesheet">
     <link href="./assets/fontawesome-free-6.4.0-web/css/brands.css" rel="stylesheet">
     <link href="./assets/fontawesome-free-6.4.0-web/css/solid.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/pqr.css">
     <title>ETB - PQR</title>
 </head>
 <body>
@@ -27,7 +31,7 @@
         <div class="main-pqr">
             <div class="usuario">
                 <?php
-                    $sql_main = mysqli_query($db, "SELECT U.tipo_documento, U.documento, U.nombre, U.apellido FROM usuario U INNER JOIN cuenta C on U.telefono_fijo = C.num_conexion ");
+                    $sql_main = mysqli_query($db, "SELECT U.tipo_documento, U.documento, U.nombre, U.apellido FROM usuario U INNER JOIN cuenta C on U.telefono_fijo = C.num_conexion INNER JOIN pqr P ON P.cuenta_id = C.id WHERE tipo_documento = '$d_t' && documento = '$n_d' || telefono_fijo = '$n_x'");
                         if($sql_main->num_rows > 0){
                             while($row = $sql_main->fetch_assoc()){
                                 echo "<div class=''>";
@@ -59,7 +63,7 @@
 
             
             <?php
-                    $sql = mysqli_query($db, "SELECT P.nombre_pqr, P.id, P.fecha, P.cuenta_id, P.agenda, D.id, D.clase, D.motivo, D.producto, D.causal, D.sintoma, C.num_facturacion, C.num_conexion, C.id, S.id_solicitante, S.nombre, S.apellido, E.estado FROM pqr P INNER JOIN detalle_pqr D on P.id = D.id INNER JOIN cuenta C on C.id = P.cuenta_id INNER JOIN solicitante S on S.id_solicitante = P.id_solicitante INNER JOIN estado_pqr E on E.id = P.estado_pqr");
+                    $sql = mysqli_query($db, "SELECT P.nombre_pqr, P.id, P.fecha, P.cuenta_id, P.agenda, D.id, D.clase, D.motivo, D.producto, D.causal, D.sintoma, C.num_facturacion, C.num_conexion, C.id, S.id_solicitante, S.nombre, S.apellido, E.estado FROM pqr P INNER JOIN detalle_pqr D on P.id = D.id INNER JOIN cuenta C on C.id = P.cuenta_id INNER JOIN solicitante S on S.id_solicitante = P.id_solicitante INNER JOIN estado_pqr E on E.id = P.estado_pqr INNER JOIN usuario U ON U.telefono_fijo = C.num_conexion WHERE U.tipo_documento = '$d_t' && U.documento = '$n_d' || U.telefono_fijo = '$n_x'");
                     $row1 = mysqli_fetch_array($sql);
                 ?>
 

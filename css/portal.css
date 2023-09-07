@@ -59,18 +59,9 @@
     position: relative;
     transition: all 0.25s ease
 }
-/* .content-item-info{
-/* .content-item-info{
-    margin: 10px;
-    margin-right: 30px;
-    width: 580px; 
-} */
-
-    width: 580px; 
-} */
-
 .oculto{
-    display: none !important;   
+    display: none !important;  
+    background: #000; 
 }
 .datos-usuario{
     margin-top: 50px;

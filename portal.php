@@ -2,7 +2,9 @@
     include('seguridad.php');
     include('DB/db.php');
     
-    // var_dump($_SESSION['documento_soli']);   
+    var_dump($_SESSION['user']);   
+    var_dump($_SESSION['user']['num_doc']);     
+    // var_dump($_POST);
     error_reporting(0);
     $doc_type  = $_POST['doc_type'];
     $num_doc = $_POST['num_doc'];
@@ -10,6 +12,11 @@
     $cuenta_fact = $_POST['cuenta_fact'];
     $id_serv = $_POST['id_serv'];
     $num_orden = $_POST['num_orden'];
+
+
+    $d_t = $_SESSION['user']['doc_type'];
+    $n_d = $_SESSION['user']['num_doc'];
+    $n_x = $_SESSION['user']['num_conex'];
 
     $mostrarSeccion = false;
     $documento = '';
@@ -22,9 +29,7 @@
         if(mysqli_num_rows($sql) > 0){
             $mostrarSeccion = true;
             if($mostrarSeccion == true){
-                if(empty($_SESSION['user'])){
-                    $_SESSION['user'] = $_POST;
-                }
+                $_SESSION['user'] = $_POST;
 
             }
             
@@ -110,7 +115,7 @@
                         <div class="body-items-inf">
                             <div class="content-info" id="con-sopo-inter">
                                     <?php
-                                        $sql_main = mysqli_query($db, "SELECT U.tipo_documento, U.documento, U.nombre, U.apellido, U.celular, U.uen, U.email, U.telefono_fijo, U.usuario_etb, U.categoria, U.departamento, U.ciudad, U.direccion, U.usm, U.barrio FROM usuario U INNER JOIN cuenta C on U.telefono_fijo = C.num_conexion WHERE tipo_documento = '$doc_type' && documento = '$num_doc' || telefono_fijo = '$num_conex'");
+                                        $sql_main = mysqli_query($db, "SELECT U.tipo_documento, U.documento, U.nombre, U.apellido, U.celular, U.uen, U.email, U.telefono_fijo, U.usuario_etb, U.categoria, U.departamento, U.ciudad, U.direccion, U.usm, U.barrio FROM usuario U INNER JOIN cuenta C on U.telefono_fijo = C.num_conexion WHERE tipo_documento = '$d_t' && documento = '$n_d' || telefono_fijo = '$n_x'");
                                         if($sql_main->num_rows > 0){
                                             while($row = $sql_main->fetch_assoc()){
                                                 echo "<div class='content-item-info item-1'>";
@@ -192,7 +197,7 @@
                                         </tr>
                                         <tbody>
                                         <?php
-                                            $sql1 = mysqli_query($db,"SELECT CONCAT(nombre, ' ', apellido), cuenta.num_facturacion, cuenta.front, cuenta.producto, cuenta.direccion, cuenta.est, cuenta.tecnologia, cuenta.estado, cuenta.central, cuenta.equipo, cuenta.molecula, cuenta.titular, cuenta.num_conexion, usuario.documento FROM usuario INNER JOIN cuenta ON usuario.telefono_fijo = cuenta.num_conexion WHERE tipo_documento = '$doc_type' && documento = '$num_doc' || telefono_fijo = '$num_conex'");
+                                            $sql1 = mysqli_query($db,"SELECT CONCAT(nombre, ' ', apellido), cuenta.num_facturacion, cuenta.front, cuenta.producto, cuenta.direccion, cuenta.est, cuenta.tecnologia, cuenta.estado, cuenta.central, cuenta.equipo, cuenta.molecula, cuenta.titular, cuenta.num_conexion, usuario.documento FROM usuario INNER JOIN cuenta ON usuario.telefono_fijo = cuenta.num_conexion WHERE tipo_documento = '$d_t' && documento = '$n_d' || telefono_fijo = '$n_x'");
                                             if($sql1->num_rows > 0){
                                                 while($row = $sql1->fetch_assoc()){
                                                     $cuenta = $row['id_user'];
@@ -242,7 +247,7 @@
                             <div class="body-items-inf">
                                 <div class="content-soport-sop" id="con-sopo-inter">
                                 <?php
-                                    $sql2 = mysqli_query($db,"SELECT cuenta.central, cuenta.equipo, cuenta.molecula, pqr.tipo_pqr, pqr.estado_pqr, visita.estado_visita, pqr.id_visita FROM cuenta INNER JOIN pqr ON cuenta.id = pqr.cuenta_id INNER JOIN visita on cuenta.id = visita.cuenta_id INNER JOIN usuario U ON U.telefono_fijo = cuenta.num_conexion WHERE tipo_documento = '$doc_type' && documento = '$num_doc' || telefono_fijo = '$num_conex'");
+                                    $sql2 = mysqli_query($db,"SELECT cuenta.central, cuenta.equipo, cuenta.molecula, pqr.tipo_pqr, pqr.estado_pqr, visita.estado_visita, pqr.id_visita FROM cuenta INNER JOIN pqr ON cuenta.id = pqr.cuenta_id INNER JOIN visita on cuenta.id = visita.cuenta_id INNER JOIN usuario U ON U.telefono_fijo = cuenta.num_conexion WHERE tipo_documento = '$d_t' && documento = '$n_d' || telefono_fijo = '$n_x'");
                                     if($sql2->num_rows > 0){
                                         $eye = 0;
                                         while($row3 = $sql2->fetch_assoc()){
@@ -300,7 +305,7 @@
                             <div class="body-items-inf">
                                 <div class="content-fact-fac" id="con-sopo-inter">
                                 <?php
-                                    $sql4 = mysqli_query($db,"SELECT CONCAT(nombre, ' ', apellido), cuenta.num_facturacion, cuenta.direccion, cuenta.est, cuenta.estado, cuenta.titular, cuenta.num_conexion, usuario.documento, usuario.email, usuario.departamento, usuario.ciudad, usuario.barrio  FROM usuario INNER JOIN cuenta ON usuario.telefono_fijo = cuenta.num_conexion WHERE tipo_documento = '$doc_type' && documento = '$num_doc' || telefono_fijo = '$num_conex'");
+                                    $sql4 = mysqli_query($db,"SELECT CONCAT(nombre, ' ', apellido), cuenta.num_facturacion, cuenta.direccion, cuenta.est, cuenta.estado, cuenta.titular, cuenta.num_conexion, usuario.documento, usuario.email, usuario.departamento, usuario.ciudad, usuario.barrio  FROM usuario INNER JOIN cuenta ON usuario.telefono_fijo = cuenta.num_conexion WHERE tipo_documento = '$d_t' && documento = '$n_d' || telefono_fijo = '$n_x'");
                                     if($sql4->num_rows > 0){
                                         while($row4 = $sql4->fetch_assoc()){
                                             echo "<div class='content-item-info item-1'>";
@@ -374,7 +379,7 @@
                     <div class="descrip-pqr">
                         <label for="">Id PQR</label>
                         <?php
-                            $sql3 = mysqli_query($db,"SELECT pqr.tipo_pqr, pqr.id, tipopqr.pqr, pqr.nombre_pqr, pqr.fecha, pqr.agenda FROM cuenta INNER JOIN pqr ON cuenta.id = pqr.cuenta_id INNER JOIN visita on cuenta.id = visita.cuenta_id INNER JOIN tipopqr on pqr.tipo_pqr = tipopqr.id INNER JOIN usuario U ON U.telefono_fijo = cuenta.num_conexion WHERE tipo_documento = '$doc_type' && documento = '$num_doc' || telefono_fijo = '$num_conex'");
+                            $sql3 = mysqli_query($db,"SELECT pqr.tipo_pqr, pqr.id, tipopqr.pqr, pqr.nombre_pqr, pqr.fecha, pqr.agenda FROM cuenta INNER JOIN pqr ON cuenta.id = pqr.cuenta_id INNER JOIN visita on cuenta.id = visita.cuenta_id INNER JOIN tipopqr on pqr.tipo_pqr = tipopqr.id INNER JOIN usuario U ON U.telefono_fijo = cuenta.num_conexion WHERE tipo_documento = '$d_t' && documento = '$n_d' || telefono_fijo = '$n_x'");
 
                             if($sql3->num_rows > 0){
                                 while($row4 = $sql3->fetch_assoc()){
@@ -475,7 +480,7 @@
                                             </tr>
                                             <tbody>
                                                 <?php
-                                                    $sql4 = mysqli_query($db,"SELECT solicitante.id_solicitante, solicitante.tipo_documento, solicitante.documento_soli, solicitante.nombre, solicitante.apellido, solicitante.telefono, solicitante.celular, solicitante.email, solicitante.direccion, C.num_conexion, U.telefono_fijo FROM solicitante INNER JOIN pqr ON solicitante.id_solicitante = pqr.id_solicitante INNER JOIN cuenta C ON C.id = pqr.cuenta_id INNER JOIN usuario u ON U.telefono_fijo = C.num_conexion WHERE U.tipo_documento = '$doc_type' && U.documento = '$num_doc' || U.telefono_fijo = '$num_conex'");
+                                                    $sql4 = mysqli_query($db,"SELECT solicitante.id_solicitante, solicitante.tipo_documento, solicitante.documento_soli, solicitante.nombre, solicitante.apellido, solicitante.telefono, solicitante.celular, solicitante.email, solicitante.direccion, C.num_conexion, U.telefono_fijo FROM solicitante INNER JOIN pqr ON solicitante.id_solicitante = pqr.id_solicitante INNER JOIN cuenta C ON C.id = pqr.cuenta_id INNER JOIN usuario U ON U.telefono_fijo = C.num_conexion WHERE U.tipo_documento = '$d_t' && U.documento = '$n_d' || U.telefono_fijo = '$n_x'");
                                                     if($sql4->num_rows > 0){
                                                         while($row5 = $sql4->fetch_assoc()){
                                                             echo "<tr>";
@@ -641,7 +646,7 @@
             echo "</script>";
         }
         
-        var_dump($_SESSION['update']);
+        // var_dump($_SESSION['update']);
         if(isset($_SESSION['update'])){
             if($_SESSION['update']){
                 echo "<script>";
@@ -655,14 +660,14 @@
                  echo "option.value = '".$_SESSION['documento_soli']."';";
                  echo "option.textContent = '".$_SESSION['nombre_solicitante']."';";
                  
-                //  echo "document.getElementById('search-soli').disabled = 'true';";
                  echo "document.getElementById('search-soli').appendChild(option);";
                  echo "</script>";
                 
                 unset($_SESSION['update']);
             }
         }
-        
+
+        session_write_close();
     ?>
 </body>
 </html>
