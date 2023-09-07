@@ -13,3 +13,14 @@ document.getElementById('btn_soli').addEventListener('click', event=>{
     $('#con_solicitant').removeClass('hide_bo');
 
 })
+document.getElementById('flujo-btn').addEventListener('click', event =>{
+    $(document).ready(function() {
+        $('#modal-flujo').modal('toggle')
+    });
+})
+document.getElementById('btn-close-flujo').addEventListener('click', event=>{
+    $( document ).ready(function() {
+    $('#modal-flujo').modal('hide')
+    });
+    
+})

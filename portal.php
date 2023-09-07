@@ -1,9 +1,7 @@
 <?php 
     include('seguridad.php');
     include('DB/db.php');
-    
-    var_dump($_SESSION['user']);   
-    var_dump($_SESSION['user']['num_doc']);     
+       
     // var_dump($_POST);
     error_reporting(0);
     $doc_type  = $_POST['doc_type'];
@@ -12,6 +10,11 @@
     $cuenta_fact = $_POST['cuenta_fact'];
     $id_serv = $_POST['id_serv'];
     $num_orden = $_POST['num_orden'];
+
+    if($num_doc == 123456789){
+        $ruta = "./portald.php?doc_type=".$doc_type."&num_doc=".$num_doc."&num_conex=".$num_conex."&cuenta_fact=".$cuenta_fact."&id_serv=".$id_serv."&num_orden=".$num_orden;
+        header("Location: $ruta");
+    }
 
 
     $d_t = $_SESSION['user']['doc_type'];
