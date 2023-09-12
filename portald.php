@@ -15,6 +15,7 @@
         $cuenta = '';
     
         $sql = mysqli_query($db,"SELECT * FROM usuario WHERE tipo_documento = '$doc_type' && documento = '$num_doc' || telefono_fijo = '$num_conex'");
+
         
             if(mysqli_num_rows($sql) > 0){
                 $mostrarSeccion = true;
@@ -39,8 +40,9 @@
     <link href="./assets/fontawesome-free-6.4.0-web/css/fontawesome.css" rel="stylesheet">
     <link href="./assets/fontawesome-free-6.4.0-web/css/brands.css" rel="stylesheet">
     <link href="./assets/fontawesome-free-6.4.0-web/css/solid.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./assets/img/ETBblue.svg">
 
-    <title>Document</title>
+    <title>ETB - Portal</title>
 </head>
 <body>
     <div class="container-genre">
@@ -91,7 +93,7 @@
 
                             <audio id="au_datos_cliente" controls class="audio" style="display: none;">
 
-                                <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
+                                <source type="audio/wav" src="./assets/audio/tep/au_datos_cliente.mp3">
 
                             </audio>
                         </div>
@@ -153,7 +155,7 @@
 
                             <audio id="au_productos" controls class="audio" style="display: none;">
 
-                                <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
+                                <source type="audio/wav" src="./assets/audio/tep/au_productos.mp3">
 
                             </audio>
                         </div>
@@ -223,9 +225,7 @@
                             
 
                                 <audio id="au_soporte" controls class="audio" style="display: none;">
-
-                                    <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
-
+                                    <source type="audio/wav" src="./assets/audio/tep/au_soporte.mp3">
                                 </audio>
                             </div>
                             <div class="body-items-inf">
@@ -297,7 +297,7 @@
                                             echo "<div class='content-item-info'>";
                                             echo "<label>Visita Abierta:</label> <span></span><br>";
                                             echo "<label>PQRs Falla Técnica:</label> <span></span><br>";
-                                            echo "<label>Reportar Falla:</label><a href='./reportarFalla.php?cliente=$n_d'><i class='fa-solid fa-eye eye-color'></i></a><span></span><br>";
+                                            echo "<label>Reportar Falla:</label><a href='./reportarFalla.php?cliente=$n_d'><i class='fa-solid fa-eye eye-color' id='eye_repor_falla'></i></a><span></span><br>";
                                             echo "</div>";
                                         }
                                     }
@@ -314,7 +314,7 @@
 
                                 <audio id="au_datos_fact" controls class="audio" style="display: none;">
 
-                                    <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
+                                    <source type="audio/wav" src="./assets/audio/tep/au_datos_cliente.mp3">
 
                                 </audio>
                             </div>
@@ -403,5 +403,10 @@
             echo "</script>";
         }
     ?>
+    <script>
+        document.getElementById('eye_repor_falla').addEventListener('mouseover', event=>{
+            habladorText('Si damos click en este enlace, el asesor podrá reportar una falla no identificada que poseea el cliente. ');
+        })
+    </script>
 </body>
 </html>

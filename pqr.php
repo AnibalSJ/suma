@@ -49,7 +49,7 @@
 
                                     <audio id="au_pqr" controls class="audio" style="display: none;">
             
-                                        <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
+                                        <source type="audio/wav" src="./assets/audio/tep/au_pqr.mp3">
             
                                     </audio>
                                 </div>

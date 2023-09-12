@@ -58,8 +58,9 @@
     <link href="./assets/fontawesome-free-6.4.0-web/css/fontawesome.css" rel="stylesheet">
     <link href="./assets/fontawesome-free-6.4.0-web/css/brands.css" rel="stylesheet">
     <link href="./assets/fontawesome-free-6.4.0-web/css/solid.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./assets/img/ETBblue.svg">
 
-    <title>Document</title>
+    <title>ETB - Portal</title>
 </head>
 <body>
     <div class="container-genre">
@@ -109,7 +110,7 @@
 
                             <audio id="au_datos_cliente" controls class="audio" style="display: none;">
 
-                                <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
+                                <source type="audio/wav" src="./assets/audio/tep/au_datos_cliente.mp3">
 
                             </audio>
                         </div>
@@ -171,7 +172,7 @@
 
                             <audio id="au_productos" controls class="audio" style="display: none;">
 
-                                <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
+                                <source type="audio/wav" src="./assets/audio/tep/au_productos.mp3">
 
                             </audio>
                         </div>
@@ -300,7 +301,7 @@
 
                                 <audio id="au_datos_fact" controls class="audio" style="display: none;">
 
-                                    <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
+                                    <source type="audio/wav" src="./assets/audio/tep/au_datos_fact.mp3">
 
                                 </audio>
                             </div>
@@ -372,7 +373,7 @@
 
                         <audio id="au_creacion_pqr" controls class="audio" style="display: none;">
 
-                            <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
+                            <source type="audio/wav" src="./assets/audio/tep/au_crecion_pqr.mp3">
 
                         </audio>
                     </h5>
@@ -445,7 +446,7 @@
 
                                 <audio id="au_solicitante" controls class="audio" style="display: none;">
 
-                                    <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
+                                    <source type="audio/wav" src="./assets/audio/tep/au_solicitante.mp3">
 
                                 </audio>
                             </label>
@@ -462,7 +463,7 @@
 
                                             <audio id="au_solicitante_tb" controls class="audio" style="display: none;">
 
-                                                <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
+                                                <source type="audio/wav" src="./assets/audio/tep/au_solicitante_tb.mp3">
 
                                             </audio>
                                     </div>
@@ -508,7 +509,7 @@
 
                             <audio id="au_solicitante_fn" controls class="audio" style="display: none;">
 
-                                <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
+                                <source type="audio/wav" src="./assets/audio/tep/au_solicitante_fn.mp3">
 
                             </audio>
                         </form>
@@ -532,7 +533,7 @@
 
                         <audio id="au_editar_contac" controls class="audio" style="display: none;">
 
-                            <source type="audio/wav" src="./assets/audio/soporte/au_general_sf.mp3">
+                            <source type="audio/wav" src="./assets/audio/tep/au_editar_contac.mp3">
 
                         </audio>
                     </h5>

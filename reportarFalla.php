@@ -1100,7 +1100,7 @@
 
                                     <div class="con-dos-btn-retor">
                                         <button class="btn_clasic btn_orage_bg">No Solucionado</button>
-                                        <button class="btn_clasic" onclick="modalExitoSoporteSolucionado()">Solucionado</button>
+                                        <button class="btn_clasic" onclick="modalExitoSoporteSolucionado();habladorText()">Solucionado</button>
                                     </div>
 
                                     <div class="items-info items-sopor">
