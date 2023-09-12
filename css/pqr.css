@@ -4,6 +4,7 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     margin-top: 50px;
+    
 }
 .usuario label{
     color: #F36F31;
@@ -40,6 +41,9 @@
 }
 .main-pqr{
     margin-bottom: 20px;
+    display: grid;
+    grid-column: 2/3;  
+    grid-row: 3/4;
 }
 .usuario input[type="text"],input[type="number"] {
     border: 1px solid #0077C6;

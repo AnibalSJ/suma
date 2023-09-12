@@ -86,6 +86,7 @@
     <!-- Modales -->
     <script src="./bootstrap/jquery.js"></script>
     <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./bootstrap/typed.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/login.js"></script>
     <script>
