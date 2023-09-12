@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-09-2023 a las 18:40:54
+-- Tiempo de generación: 12-09-2023 a las 23:32:18
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -49,7 +49,8 @@ CREATE TABLE `cuenta` (
 
 INSERT INTO `cuenta` (`id`, `num_facturacion`, `front`, `producto`, `direccion`, `est`, `tecnologia`, `estado`, `central`, `equipo`, `molecula`, `titular`, `num_conexion`) VALUES
 (0, 8312587, 'PORTALFIJA', '3PLAY 30M SILVER 1', 'KR 69D 24A 78 IN 2 AP 404', '4', 'FTTH', 'Activo', 'CENTRAL CUN', 'BOCUZTC60104003', 'N4CU07_E15', 3, 601410426),
-(1, 312685, 'PORTALFIJA', '3PLAY 30M SILVER 1', 'KR 50 88 SUR 81 N 3', '4', 'FTTH ', 'Activo', 'CENTRAL CUN', 'BOCUZTC60104003', 'N4CU07_E15', 3, 601421569);
+(1, 312685, 'PORTALFIJA', '3PLAY 30M SILVER 1', 'KR 50 88 SUR 81 N 3', '4', 'FTTH ', 'Activo', 'CENTRAL CUN', 'BOCUZTC60104003', 'N4CU07_E15', 3, 601421569),
+(5, 332685, 'PORTALFIJA', '3PLAY 30M ', 'KR 690 23A 34 N 2 AP 402', '4', 'FTTH ', 'Activo', 'CENTRAL CUN', 'BOCUZTC60104003', 'N4CU07_E15', 5, 6014305423);
 
 -- --------------------------------------------------------
 
